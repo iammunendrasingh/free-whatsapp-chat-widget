@@ -72,16 +72,17 @@ var s = document.createElement('script');
 </script>
 ```
 
-## Live Demo
+## Live Demo to Visualize WhatsApp Widget on Your Website
+Visit [https://iammunendrasingh.github.io/free-whatsapp-chat-widget/visu](https://iammunendrasingh.github.io/free-whatsapp-chat-widget/visu) to Visualize WhatsApp Widget on Your Website by just providing  your website URL.
 
-Visit the [Free WhatsApp Chat Widget Generator](https://iframeweb.com/tools/free-whatsapp-chat-widget-for-website/) to try out the tool and see how it works.
+If you like the chat widget, generate it for your website here:  [Free WhatsApp Chat Widget Generator](https://iframeweb.com/tools/free-whatsapp-chat-widget-for-website/) and try out the tool and see how it works actually on your website.
 
 ## Support
 
 For any questions, issues, or support, feel free to reach out to us:
 
 - Email: [support@iframeweb.com](mailto:support@iframeweb.com)
-- Website: [iframeweb.com](https://iframeweb.com)
+- Website: [iframeweb.com/contact](https://iframeweb.com/contact)
 
 We’re here to help!
 
