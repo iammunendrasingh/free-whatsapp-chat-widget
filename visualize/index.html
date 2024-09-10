@@ -1,11 +1,36 @@
 <head>
     <script>
-      function loadWebsite() {
+        function loadWebsite() {
         const websiteURL = document.getElementById('website-url').value;
-        if (websiteURL) {
-          document.getElementById('website-frame').src = websiteURL;
+        const iframe = document.getElementById('website-frame');
+        const errorMessage = document.getElementById('error-message');
+        
+        if (isValidURL(websiteURL)) {
+            iframe.src = websiteURL;
+            errorMessage.innerText = '';
+        } else {
+            errorMessage.innerText = 'Please enter a valid URL';
+            errorMessage.style.display = 'block'; // Show the error message
         }
-      }
+        }
+
+        function isValidURL(string) {
+        try {
+            new URL(string);
+            return true;
+        } catch (_) {
+            return false;
+        }
+        }
+
+
+      document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('website-url').addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            loadWebsite();
+          }
+        });
+      });
     </script>
   
     <style>
@@ -24,16 +49,21 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 20vh;
+        height: 28vh;
         gap: 10px;
         padding: 40px 10px;
     }
     iframe {
-    position: fixed;
     width: 100%;
-    height: 80vh;
-    border: 2px solid #d9d9d9;
+    height: 60vh;
+    border: solid #d9d9d9;
+    border-width: 2px 0 0 0;
     border-radius: 2px;
+    }
+    .error {
+      color: red;
+      margin-top: 5px;
+      display: none;
     }
     </style>
   </head>
@@ -43,17 +73,18 @@
         <h2>Visualize WhatsApp Widget on Your Website</h2>
         <div class="form">
             <label for="website-url">Enter your website URL:
-            <input type="text" id="website-url" placeholder="https://example.com"/>
+            <input type="text" id="website-url" placeholder="https://example.com" value="https://"/>
             </label>
             <button onclick="loadWebsite()">Load Website</button>
         </div>
+        <p id="error-message" class="error"></p>
         <p>If your website has certain security settings (like X-Frame-Options headers), it might block from loading it.</p>
     </div>
   
     <iframe id="website-frame" src="https://iammunendrasingh.github.io/free-whatsapp-chat-widget/" frameborder="0"></iframe>
   
     <script>
-        var url = 'https://cdn.jsdelivr.net/gh/iammunendrasingh/free-whatsapp-chat-widget@main/main.js';
+        var url = 'https://cdn.jsdelivr.net/gh/iammunendrasingh/iframeweb@main/whatsapp-widget/main.js';
         var s = document.createElement('script');
             s.type = 'text/javascript';
             s.async = true;
@@ -89,4 +120,3 @@
             x.parentNode.insertBefore(s, x);
         </script>
   </body>
-  
