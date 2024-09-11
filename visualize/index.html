@@ -45,21 +45,23 @@
 <body>
     <div class="container">
         <div class="website-form" id="top">
-            <h2>Visualize WhatsApp Widget on Your Website</h2>
-            <div class="form">
+            <h2 class="top-margin">Visualize WhatsApp Widget on Your Website</h2>
+            <div class="form top-margin">
                 <label for="website-url">Enter your website URL:
                     <input type="text" id="website-url" placeholder="https://example.com" value="https://" />
                 </label>
                 <button onclick="loadWebsite()">Load Website</button>
             </div>
-            <p id="error-message" class="error"></p>
-            <p>If your website has certain security settings (like X-Frame-Options headers), it might block from loading it.</p>
+            <p id="error-message" class="error top-margin"></p>
+            <p class="top-margin">If your website has certain security settings (like X-Frame-Options headers), it might block from loading it.</p>
         </div>
-        <div class="divider" id="divider"><button id="fullscreen-btn">Full Screen</button></div>
+        <div class="divider" id="divider">
+            <button id="fullscreen-btn">Full Screen</button>
+        </div>
         <div class="bottom" id="bottom">
             <iframe id="website-frame" src="https://iammunendrasingh.github.io/free-whatsapp-chat-widget/" frameborder="0"></iframe>
         </div>
     </div>
-    <script src="scripts.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
