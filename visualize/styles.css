@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent body scrolling */
+    height: 100vh; /* Full viewport height */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.website-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 40px 10px;
+    background-color: #f0f0f0;
+    overflow: hidden; /* Prevent scroll in this section */
+}
+
+input, button {
+    margin: 10px 0;
+    padding: 8px;
+    font-size: 16px;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: solid #d9d9d9;
+    border-width: 2px 0 0 0;
+    border-radius: 2px;
+}
+
+.error {
+    color: red;
+    margin-top: 5px;
+    display: none;
+}
+
+.divider {
+    height: 10px;
+    background-color: #ccc;
+    cursor: ns-resize;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.divider button {
+    font-size: 12px;
+    padding: 2px 5px;
+    cursor: pointer;
+}
+
+.bottom {
+    flex-grow: 1;
+    background-color: #e0e0e0;
+    overflow: hidden; /* Prevent scroll in this section */
+}
+
+.fullscreen-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+}
