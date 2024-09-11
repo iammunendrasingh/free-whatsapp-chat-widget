@@ -28,45 +28,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    let topHeight = document.getElementById('top').offsetHeight;
-    let isResizing = false;
-
-    document.getElementById('divider').addEventListener('mousedown', (e) => {
-        isResizing = true;
-        let startY = e.clientY;
-        let startTopHeight = topHeight;
-
-        const onMouseMove = (e) => {
-            if (isResizing) {
-                topHeight = startTopHeight + (e.clientY - startY);
-                topHeight = Math.max(50, topHeight); // Minimum height
-                topHeight = Math.min(window.innerHeight - 50, topHeight); // Maximum height
-                document.getElementById('top').style.height = topHeight + 'px';
-                document.getElementById('bottom').style.height = `calc(100vh - ${topHeight}px - 10px)`; // 10px for divider
-            }
-        };
-
-        const onMouseUp = () => {
-            isResizing = false;
-            document.removeEventListener('mousemove', onMouseMove);
-            document.removeEventListener('mouseup', onMouseUp);
-        };
-
-        document.addEventListener('mousemove', onMouseMove);
-        document.addEventListener('mouseup', onMouseUp);
-    });
-
     document.getElementById('fullscreen-btn').addEventListener('click', () => {
         const isFullScreen = document.body.classList.toggle('fullscreen');
-        document.getElementById('fullscreen-btn').innerText = isFullScreen ? 'Reset View' : 'Full Screen';
-        if (isFullScreen) {
-            topHeight = 10;
-            document.getElementById('top').style.height = topHeight + 'px';
-            document.getElementById('bottom').style.height = '100vh';
-        } else {
-            topHeight = 200; // Default height
-            document.getElementById('top').style.height = topHeight + 'px';
-            document.getElementById('bottom').style.height = `calc(100vh - ${topHeight}px - 10px)`; // 10px for divider
-        }
+        document.getElementById('fullscreen-btn').innerText = isFullScreen ? '⬇ Reset View ⬇' : '↕️ Full Screen ↕️';
+        document.getElementById('top').style.height = isFullScreen ? '0px' : 'auto'; // Adjust as needed
+        document.getElementById('bottom').style.height = isFullScreen ? 'calc(100vh - 10px)' : 'calc(100vh - 200px - 10px)'; // 40px for button
     });
 });
