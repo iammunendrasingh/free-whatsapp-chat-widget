@@ -95,4 +95,4 @@ We’re here to help!
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0 (GPL-3.0). You can view the full license in the [LICENSE](https://github.com/iammunendrasingh/iframeweb/blob/main/LICENSE) file.
+This project is licensed under the GNU General Public License v3.0 (GPL-3.0). You can view the full license in the [LICENSE](./LICENSE) file.
