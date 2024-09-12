@@ -35,3 +35,15 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('bottom').style.height = isFullScreen ? 'calc(100vh - 10px)' : 'calc(100vh - 200px - 10px)'; // 40px for button
     });
 });
+
+window.addEventListener('DOMContentLoaded', () => {
+    const promoBtn = document.getElementById('promo-btn');
+    setTimeout(() => {
+        promoBtn.style.transform = 'translateX(0)';
+        promoBtn.style.opacity = '1';
+    }, 3000);
+
+    promoBtn.addEventListener('click', () => {
+        window.open('https://iframeweb.com/tools/free-whatsapp-chat-widget-for-website/', '_blank');
+    });
+});
