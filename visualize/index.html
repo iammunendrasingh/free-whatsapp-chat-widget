@@ -52,7 +52,10 @@
                 <div class="form">
                     <label for="website-url">Enter your website URL</label>
                     <input type="text" id="website-url" placeholder="https://example.com" value="https://" />
-                    <p>*If your website has certain security settings <br>e.g. X-Frame-Options headers, it might refuse/block loading.</p>
+                    <details>
+                        <summary>Error in loading?</summary>
+                        <p>*If your website has certain security settings <br>e.g. X-Frame-Options headers, it might refuse/block loading.</p>
+                    </details>
                     <button onclick="loadWebsite()" class="load-btn">Load Website</button>
                 </div>
                 <p id="error-message" class="error"></p>
