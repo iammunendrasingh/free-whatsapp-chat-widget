@@ -45,15 +45,18 @@
 <body>
     <div class="container">
         <div class="website-form" id="top">
-            <h2>Visualize WhatsApp Widget on Your Website</h2>
-            <div class="form">
-                <label for="website-url">Enter your website URL:
-                    <input type="text" id="website-url" placeholder="https://example.com" value="https://" />
-                </label>
-                <button onclick="loadWebsite()">Load Website</button>
+            <div class="title-section">
+                <h1>Visualize WhatsApp Widget on Your Website</h1>
             </div>
-            <p id="error-message" class="error"></p>
-            <p>If your website has certain security settings (like X-Frame-Options headers), it might block from loading it.</p>
+            <div class="form-section">
+                <div class="form">
+                    <label for="website-url">Enter your website URL</label>
+                    <input type="text" id="website-url" placeholder="https://example.com" value="https://" />
+                    <p>*If your website has certain security settings <br>e.g. X-Frame-Options headers, it might refuse/block loading.</p>
+                    <button onclick="loadWebsite()" class="load-btn">Load Website</button>
+                </div>
+                <p id="error-message" class="error"></p>
+            </div>
         </div>
         <div class="fullscreen-btn-container">
             <button id="fullscreen-btn" class="fullscreen-btn">↕️ Full Screen ↕️</button>
