@@ -108,6 +108,13 @@ iframe {
 .bottom {
     flex-grow: 1;
     background-color: #f0f4f8;
+    position: relative;
+}
+
+.fullscreen-btn-container {
+    position: absolute;
+    top: 1em;
+    right: 2em;
 }
 
 .fullscreen-btn-container {
