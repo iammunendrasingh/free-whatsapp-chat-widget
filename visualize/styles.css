@@ -22,7 +22,11 @@ body {
     border-radius: 8px; 
 }
 
-.title-section, .form-section {
+.title-section {
+    flex: 1 1 850px;
+    padding: 0;
+}
+.form-section {
     flex: 1 250px;
     padding: 20px;
 }
@@ -30,7 +34,7 @@ body {
 .form-section {
     display: flex;
     flex-direction: column;
-    align-items: flex-end; 
+    align-items: center; 
     width: 100%;
 }
 
@@ -97,7 +101,6 @@ iframe {
 .bottom {
     flex-grow: 1;
     background-color: #f0f4f8;
-    padding-top: 15px;
 }
 
 .fullscreen-btn-container {
@@ -106,7 +109,7 @@ iframe {
     align-items: center;
     background-color: #f0f4f8;
     padding: 0 0;
-    height: 5px;
+    height: 0px;
 }
 
 button#fullscreen-btn {
