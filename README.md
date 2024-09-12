@@ -1,4 +1,11 @@
+![Banner](./header.png)
 # Free WhatsApp Chat Widget for Website
+
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/iammunendrasingh/free-whatsapp-chat-widget?include_prereleases)
+![GitHub last commit](https://img.shields.io/github/last-commit/iammunendrasingh/free-whatsapp-chat-widget)
+![GitHub issues](https://img.shields.io/github/issues-raw/iammunendrasingh/free-whatsapp-chat-widget)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/iammunendrasingh/free-whatsapp-chat-widget)
+![GitHub](https://img.shields.io/github/license/iammunendrasingh/free-whatsapp-chat-widget?random=123)
 
 The **Free WhatsApp Chat Widget Generator** allows website owners to create and customize a WhatsApp chat button and widget for their website in just three easy steps. The tool is available at [iframeweb.com](https://iframeweb.com/tools/free-whatsapp-chat-widget-for-website/) or you can [visualize](https://iammunendrasingh.github.io/free-whatsapp-chat-widget/visualize) chat widget on your website just by providing your website URL..
 
