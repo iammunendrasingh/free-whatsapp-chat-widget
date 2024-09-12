@@ -23,12 +23,14 @@ body {
 }
 
 .title-section {
+    display: flex;
     flex: 1 1 850px;
-    padding: 0;
+    padding: 10px;
+    justify-content: center;
 }
 .form-section {
     flex: 1 250px;
-    padding: 20px;
+    padding: 40px 10px;
 }
 
 .form-section {
@@ -143,7 +145,7 @@ button#fullscreen-btn:hover {
 }
 
 @media only screen and (max-width: 600px) {
- .form-section {
-    align-items: flex-start;
- }
+    .form-section {
+        padding: 10px;
+    }    
 }
