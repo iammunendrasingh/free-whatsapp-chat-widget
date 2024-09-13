@@ -134,13 +134,19 @@
                         // Clone the original chat message div
                         const newMessageDiv = originalMessage.cloneNode(true);
     
+                        // Remove the brand name div in the cloned message
+                        const brandElement = newMessageDiv.querySelector('.wa-chat-box-content-chat-brand');
+                        if (brandElement) {
+                            brandElement.remove();
+                        }
+    
                         // Get dynamic greeting
                         const dynamicGreeting = getGreeting();
     
                         // Update the new message text inside the cloned div
                         const welcomeMessage = newMessageDiv.querySelector('.wa-chat-box-content-chat-welcome');
                         if (welcomeMessage) {
-                            welcomeMessage.innerHTML = `${dynamicGreeting}!<br>Need my help setting up this?<br>Let's connect, I'll help (No charges)`;
+                            welcomeMessage.innerHTML = `${dynamicGreeting}!<br>Need my help setting up this on your website?<br>Let's chat, I'll help (No charges)`;
                         }
     
                         // Append the new message div to the chat container
@@ -155,6 +161,7 @@
                 }, 3000); // Change the message after the typing effect ends
             }, 3000); // 3 seconds delay before showing chat box and starting typing effect
         });
-    </script>        
+    </script>
+    
 </body>
 </html>
