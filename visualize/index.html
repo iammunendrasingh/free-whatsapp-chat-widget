@@ -96,6 +96,22 @@
                 return `${formattedHours}:${minutes} ${period}`;
             }
     
+            // Function to get dynamic greeting based on time of day
+            function getGreeting() {
+                const now = new Date();
+                const hours = now.getHours();
+    
+                if (hours < 12) {
+                    return "Good Morning";
+                } else if (hours === 12) {
+                    return "Good Noon";
+                } else if (hours > 12 && hours < 17) {
+                    return "Good Afternoon";
+                } else {
+                    return "Good Evening";
+                }
+            }
+    
             // Step 1: Show the wa-chat-box after 3 seconds
             setTimeout(function () {
                 const chatBox = document.querySelector('.wa-chat-box');
@@ -109,7 +125,7 @@
                     showTypingEffect(subtitleElement, 3000); // Show typing effect for 3 seconds
                 }
     
-                // Step 3: After 3 seconds, duplicate the chat message with the new text
+                // Step 3: After 3 seconds, duplicate the chat message with the new dynamic greeting
                 setTimeout(function () {
                     const chatContainer = document.querySelector('.wa-chat-box-content');
                     const originalMessage = document.querySelector('.wa-chat-box-content-chat');
@@ -118,10 +134,13 @@
                         // Clone the original chat message div
                         const newMessageDiv = originalMessage.cloneNode(true);
     
+                        // Get dynamic greeting
+                        const dynamicGreeting = getGreeting();
+    
                         // Update the new message text inside the cloned div
                         const welcomeMessage = newMessageDiv.querySelector('.wa-chat-box-content-chat-welcome');
                         if (welcomeMessage) {
-                            welcomeMessage.innerHTML = `Hi there!<br>Need my help setting up this on your website?<br>Let's chat, I'll help (No charges)`;
+                            welcomeMessage.innerHTML = `${dynamicGreeting}!<br>Need my help setting up this?<br>Let's connect, I'll help (No charges)`;
                         }
     
                         // Append the new message div to the chat container
@@ -136,6 +155,6 @@
                 }, 3000); // Change the message after the typing effect ends
             }, 3000); // 3 seconds delay before showing chat box and starting typing effect
         });
-    </script>    
+    </script>        
 </body>
 </html>
