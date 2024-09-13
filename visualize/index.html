@@ -22,9 +22,9 @@
                 "position": "right"
             },
             "brandSetting": {
-                "brandName": "iFrameWeb Solutions",
+                "brandName": "Munendra Singh",
                 "brandSubTitle": "Typically replies within 24 hrs",
-                "brandImg": "https://iframeweb.com/wp-content/uploads/2023/10/iframeweb-logo.jpg",
+                "brandImg": "https://gravatar.com/avatar/5c77d83e3b7c63a7a1764b4ebc4b191e?size=256&cache=1726093597906",
                 "welcomeText": "Hi there!\nHow can we help you?",
                 "messageText": "Hello, I have a question about {{page_link}}",
                 "backgroundColor": "#404145",
@@ -70,5 +70,62 @@
         </div>
     </div>
     <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    // Function to show typing effect with dots animation
+    function showTypingEffect(element, duration) {
+        let dots = 0;
+        const typingInterval = setInterval(function () {
+            dots = (dots + 1) % 4; // Cycles between 0, 1, 2, 3 dots
+            element.innerHTML = `Typing${'.'.repeat(dots)}`;
+        }, 500); // Change dots every 500ms
+
+        // Stop after the specified duration
+        setTimeout(function () {
+            clearInterval(typingInterval);
+        }, duration);
+    }
+
+    // Function to get the current local time in HH:MM AM/PM format
+    function getCurrentLocalTime() {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const period = hours >= 12 ? 'PM' : 'AM';
+        const formattedHours = (hours % 12) || 12; // Convert to 12-hour format
+        return `${formattedHours}:${minutes} ${period}`;
+    }
+
+    // Step 1: Show the wa-chat-box after 3 seconds
+    setTimeout(function () {
+        const chatBox = document.querySelector('.wa-chat-box');
+        if (chatBox) {
+            chatBox.style.display = 'block';
+        }
+
+        // Step 2: Show "Typing..." effect for 3 seconds in the subtitle
+        const subtitleElement = document.querySelector('.wa-chat-box-brand-subtitle');
+        if (subtitleElement) {
+            showTypingEffect(subtitleElement, 3000); // Show typing effect for 3 seconds
+        }
+
+        // Step 3: After 3 seconds, change the welcome message
+        setTimeout(function () {
+            const welcomeMessage = document.querySelector('.wa-chat-box-content-chat-welcome');
+            if (welcomeMessage) {
+                const newMessage = `Hi there!<br>Need my help setting up this on your website?<br>Let's chat, I'll help (No charges)`;
+                welcomeMessage.innerHTML = newMessage; // Apply the new message with proper <br> tags
+            }
+
+            // Step 4: After showing the message, revert the subtitle to "Last Seen: [Current local time]"
+            const currentTime = getCurrentLocalTime();
+            if (subtitleElement) {
+                subtitleElement.innerHTML = `Last Seen: ${currentTime}`;
+            }
+        }, 3000); // Change the message after the typing effect ends
+    }, 3000); // 3 seconds delay before showing chat box and starting typing effect
+});
+
+    </script>
 </body>
 </html>
