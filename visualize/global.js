@@ -1,12 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Set default time variables in seconds
-    const DEFAULT_WIDGET_OPEN_DELAY = 3; // Delay before showing the widget
-    const DEFAULT_TYPING_DURATION = 3; // Duration for the "Typing..." effect
+    const DEFAULT_TYPING_DURATION = 10; // Duration for the "Typing..." effect
     const MIN_RANDOM_DURATION = 30; // Min duration for status toggle
     const MAX_RANDOM_DURATION = 60; // Max duration for status toggle
 
     // Convert seconds to milliseconds
-    const WIDGET_OPEN_DELAY_MS = DEFAULT_WIDGET_OPEN_DELAY * 1000;
     const TYPING_DURATION_MS = DEFAULT_TYPING_DURATION * 1000;
 
     // Function to get the current local time in HH:MM AM/PM format
