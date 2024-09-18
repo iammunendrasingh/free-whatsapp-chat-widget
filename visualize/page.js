@@ -65,6 +65,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const subtitleElement = document.querySelector('.wa-chat-box-brand-subtitle');
         if (subtitleElement) {
             showTypingEffect(subtitleElement, PAGE_TYPING_DURATION_MS); // Show typing effect for page-specific duration
+
+            // Change status to Online immediately after typing ends
+            setTimeout(function () {
+                subtitleElement.innerHTML = "Online";
+            }, PAGE_TYPING_DURATION_MS);
         }
     }, PAGE_WIDGET_OPEN_DELAY_MS); // Use page-specific delay to open widget
 });

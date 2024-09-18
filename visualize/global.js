@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Set default time variables in seconds
     const DEFAULT_WIDGET_OPEN_DELAY = 3; // Delay before showing the widget
     const DEFAULT_TYPING_DURATION = 3; // Duration for the "Typing..." effect
+    const MIN_RANDOM_DURATION = 30; // Min duration for status toggle
+    const MAX_RANDOM_DURATION = 60; // Max duration for status toggle
 
     // Convert seconds to milliseconds
     const WIDGET_OPEN_DELAY_MS = DEFAULT_WIDGET_OPEN_DELAY * 1000;
@@ -17,9 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
         return `${formattedHours}:${minutes} ${period}`;
     }
 
-    // Function to get a random duration between 30 and 60 seconds
-    function getRandomDuration() {
-        return Math.floor(Math.random() * (60 - 30 + 1) + 30) * 1000; // Convert seconds to milliseconds
+    // Function to get a random duration between the defined min and max values
+    function getRandomDuration(minSeconds, maxSeconds) {
+        return Math.floor(Math.random() * (maxSeconds - minSeconds + 1) + minSeconds) * 1000; // Convert to milliseconds
     }
 
     // Function to handle the online and last seen status changes
@@ -34,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 statusDot.style.background = 'var(--OnlineStatus)'; // Green dot for online
             }
 
-            setTimeout(setStatusToLastSeen, getRandomDuration());
+            setTimeout(setStatusToLastSeen, getRandomDuration(MIN_RANDOM_DURATION, MAX_RANDOM_DURATION));
         }
 
         function setStatusToLastSeen() {
@@ -46,11 +48,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 statusDot.style.background = 'var(--OfflineStatus)'; // Gray dot for offline
             }
 
-            // Switch back to "Online" after random time
-            setTimeout(setStatusToOnline, getRandomDuration());
+            // Switch back to "Online" after a random time
+            setTimeout(setStatusToOnline, getRandomDuration(MIN_RANDOM_DURATION, MAX_RANDOM_DURATION));
         }
 
-        // Start with "Online" status
+        // Start with "Online" status after typing finishes
         setStatusToOnline();
     }
 
@@ -90,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
             chatBoxContent.style.visibility = 'visible'; // Make chat content visible
         }
 
-        // Start toggling statuses
+        // Start toggling statuses after typing effect
         if (subtitleElement) {
             toggleOnlineStatus(subtitleElement);
         }
