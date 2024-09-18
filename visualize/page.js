@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Set page-specific time variables in seconds (override global if needed)
     const PAGE_WIDGET_OPEN_DELAY = 5; // Page-specific delay before showing the widget
-    const PAGE_TYPING_DURATION = 4; // Page-specific duration for the "Typing..." effect
+    const PAGE_TYPING_DURATION = 3; // Page-specific duration for the "Typing..." effect
     const MESSAGE_DISPLAY_DELAY = PAGE_TYPING_DURATION + 0; // Time to display the message after typing
 
     // Convert seconds to milliseconds
