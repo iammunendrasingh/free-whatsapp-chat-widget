@@ -1,13 +1,35 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Define page-specific delay time in milliseconds
-    const PAGE_DELAY_TIME = 3000; // Change this value to adjust the delay
+    // Set page-specific time variables in seconds (override global if needed)
+    const PAGE_WIDGET_OPEN_DELAY = 5; // Page-specific delay before showing the widget
+    const PAGE_TYPING_DURATION = 4; // Page-specific duration for the "Typing..." effect
+    const MESSAGE_DISPLAY_DELAY = PAGE_TYPING_DURATION + 1; // Time to display the message after typing
+
+    // Convert seconds to milliseconds
+    const PAGE_WIDGET_OPEN_DELAY_MS = PAGE_WIDGET_OPEN_DELAY * 1000;
+    const PAGE_TYPING_DURATION_MS = PAGE_TYPING_DURATION * 1000;
+    const MESSAGE_DISPLAY_DELAY_MS = MESSAGE_DISPLAY_DELAY * 1000;
+
+    // Function to show typing effect with dots animation
+    function showTypingEffect(element, duration) {
+        let dots = 0;
+        const typingInterval = setInterval(function () {
+            dots = (dots + 1) % 4; // Cycles between 0, 1, 2, 3 dots
+            element.innerHTML = `Typing${'.'.repeat(dots)}`;
+        }, 500); // Change dots every 500ms
+
+        // Stop after the specified duration
+        setTimeout(function () {
+            clearInterval(typingInterval);
+            document.dispatchEvent(new Event("chatReady")); // Custom event to signal typing is done
+        }, duration);
+    }
 
     // After a delay, show the chat widget and trigger the global event
     setTimeout(function () {
         const chatBox = document.querySelector('.wa-chat-box');
         if (chatBox) {
             chatBox.style.display = 'block'; // Show the chat widget
-            document.dispatchEvent(new Event("widgetVisible")); // Trigger the event for the global JS to start
+            document.dispatchEvent(new Event("widgetVisible")); // Trigger the event for global status changes
         }
 
         // Add personalized message after "chatReady" is triggered
@@ -36,7 +58,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Append the new message div to the chat container
                     chatContainer.appendChild(newMessageDiv);
                 }
-            }, PAGE_DELAY_TIME); // Use PAGE_DELAY_TIME variable
+            }, MESSAGE_DISPLAY_DELAY_MS); // Delay to show message after typing ends
         });
-    }, PAGE_DELAY_TIME); // Use PAGE_DELAY_TIME variable
+
+        // Show typing effect before the message
+        const subtitleElement = document.querySelector('.wa-chat-box-brand-subtitle');
+        if (subtitleElement) {
+            showTypingEffect(subtitleElement, PAGE_TYPING_DURATION_MS); // Show typing effect for page-specific duration
+        }
+    }, PAGE_WIDGET_OPEN_DELAY_MS); // Use page-specific delay to open widget
 });

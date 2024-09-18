@@ -1,21 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Define delay time in milliseconds
-    const DELAY_TIME = 3000; // Change this value to adjust the delay
+    // Set default time variables in seconds
+    const DEFAULT_WIDGET_OPEN_DELAY = 3; // Delay before showing the widget
+    const DEFAULT_TYPING_DURATION = 3; // Duration for the "Typing..." effect
 
-    // Function to show typing effect with dots animation
-    function showTypingEffect(element, duration) {
-        let dots = 0;
-        const typingInterval = setInterval(function () {
-            dots = (dots + 1) % 4; // Cycles between 0, 1, 2, 3 dots
-            element.innerHTML = `Typing${'.'.repeat(dots)}`;
-        }, 500); // Change dots every 500ms
-
-        // Stop after the specified duration
-        setTimeout(function () {
-            clearInterval(typingInterval);
-            document.dispatchEvent(new Event("chatReady")); // Custom event to signal typing is done
-        }, duration);
-    }
+    // Convert seconds to milliseconds
+    const WIDGET_OPEN_DELAY_MS = DEFAULT_WIDGET_OPEN_DELAY * 1000;
+    const TYPING_DURATION_MS = DEFAULT_TYPING_DURATION * 1000;
 
     // Function to get the current local time in HH:MM AM/PM format
     function getCurrentLocalTime() {
@@ -34,29 +24,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Function to handle the online and last seen status changes
     function toggleOnlineStatus(subtitleElement) {
-        const currentTime = getCurrentLocalTime();
-        const statusDot = document.querySelector('.online-status'); // Assuming this is the dot for online status
+        const statusDot = document.querySelector('.online-status'); // Dot for online status
 
         function setStatusToOnline() {
             if (subtitleElement) {
                 subtitleElement.innerHTML = "Online";
             }
             if (statusDot) {
-                statusDot.style.background = 'var(--OnlineStatus)'; // Set dot to green (online color)
+                statusDot.style.background = 'var(--OnlineStatus)'; // Green dot for online
             }
 
             setTimeout(setStatusToLastSeen, getRandomDuration());
         }
 
         function setStatusToLastSeen() {
+            const currentTime = getCurrentLocalTime(); // Get the current time
             if (subtitleElement) {
                 subtitleElement.innerHTML = `Last seen today at ${currentTime}`;
             }
             if (statusDot) {
-                statusDot.style.background = 'var(--OfflineStatus)'; // Set dot to offline color
+                statusDot.style.background = 'var(--OfflineStatus)'; // Gray dot for offline
             }
 
-            // Randomly choose a duration (30 to 60 seconds) to switch back to "Online"
+            // Switch back to "Online" after random time
             setTimeout(setStatusToOnline, getRandomDuration());
         }
 
@@ -93,24 +83,17 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(chatBox, { attributes: true });
     }
 
-    // Listen for the custom event to start status changes and make the chat visible
+    // Listen for the custom event to start status changes and visibility
     document.addEventListener("widgetVisible", function () {
-        // Show "Typing..." effect for the defined duration
         const subtitleElement = document.querySelector('.wa-chat-box-brand-subtitle');
-        if (subtitleElement) {
-            showTypingEffect(subtitleElement, DELAY_TIME); // Use DELAY_TIME variable
+        if (chatBoxContent) {
+            chatBoxContent.style.visibility = 'visible'; // Make chat content visible
         }
 
-        // After typing effect, handle visibility and online status
-        document.addEventListener("chatReady", function () {
-            if (chatBoxContent) {
-                chatBoxContent.style.visibility = 'visible'; // Make chat box content visible after typing
-            }
-
-            if (subtitleElement) {
-                toggleOnlineStatus(subtitleElement); // Start toggling between Online and Last Seen
-            }
-        });
+        // Start toggling statuses
+        if (subtitleElement) {
+            toggleOnlineStatus(subtitleElement);
+        }
     });
 
     // Detect chat box display changes (e.g., from user interaction)
