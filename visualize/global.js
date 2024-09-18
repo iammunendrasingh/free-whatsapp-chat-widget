@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Define delay time in milliseconds
-    const DELAY_TIME = 10000; // Change this value to adjust the delay
+    const DELAY_TIME = 3000; // Change this value to adjust the delay
 
     // Function to show typing effect with dots animation
     function showTypingEffect(element, duration) {

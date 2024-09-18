@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Define page-specific delay time in milliseconds
-    const PAGE_DELAY_TIME = 10000; // Change this value to adjust the delay
+    const PAGE_DELAY_TIME = 3000; // Change this value to adjust the delay
 
     // After a delay, show the chat widget and trigger the global event
     setTimeout(function () {
